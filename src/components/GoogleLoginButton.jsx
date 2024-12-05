@@ -31,6 +31,7 @@ function GoogleLoginButton() {
                         window.location.href='/';
                     })
                     .catch((error) => {
+                        alert("Failed to Login. Please try after sometime..")
                         setUserProfile({
                             loading: false,
                             userProfile:error.response.data

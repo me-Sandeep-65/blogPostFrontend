@@ -5,7 +5,7 @@ import userProfile from "../store/selectors/userProfile";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import axios from "axios";
 
-export default function ProfilePreview({MainButtonRefs}){
+export default function ProfilePreview({MainButtonRefs}, ...otherProps){
     const userState = useRecoilValue(userProfile);
     const setUserProfile = useSetRecoilState(userProfile);
     const navigate = useNavigate();
@@ -16,6 +16,8 @@ export default function ProfilePreview({MainButtonRefs}){
         if(!userState.userProfile){
             axios.get(`${baseurl}/api/v1/getuserdata`, {withCredentials: true})
             .then((response) => {
+                console.log('userdata is loading..')
+                console.log(response.data);
                 setUserProfile({
                     loading: false,
                     userProfile:response.data
@@ -30,17 +32,21 @@ export default function ProfilePreview({MainButtonRefs}){
         }
     },[setUserProfile]);
 
+    console.log('from profile preview')
+    console.log(userState);
+
+
     const handleLoginBtnClick = ()=>{
         MainButtonRefs.forEach(element => {
-            element.current.classList.add('border-transparent');
-            element.current.classList.remove('border-indigo-600');
+            element.current.classList.add('border-transparent')
+            element.current.classList.remove('border-indigo-600')
         });
         navigate("/login");
     }
     const handleSignupBtnClick = ()=>{
         MainButtonRefs.forEach(element => {
-            element.current.classList.add('border-transparent');
-            element.current.classList.remove('border-indigo-600');
+            element.current.classList.add('border-transparent')
+            element.current.classList.remove('border-indigo-600')
         });
         navigate("/signup");
     }
@@ -60,6 +66,14 @@ export default function ProfilePreview({MainButtonRefs}){
             alert("Unable to logout.")
         })
     }
+    const handleMypostsBtnClick = () => {
+        MainButtonRefs.forEach(element => {
+            element.current.classList.add('border-transparent')
+            element.current.classList.remove('border-indigo-600')
+        });
+        navigate('/my-posts');
+        
+    }
 
     if(userState.loading){
         return(<UserLoading />)
@@ -72,7 +86,7 @@ export default function ProfilePreview({MainButtonRefs}){
             <ButtonOutlined tailwindClasses="mx-1" text="Log In" onClick={handleLoginBtnClick} />
             <ButtonOutlined tailwindClasses="mx-1" text="Sign Up"  onClick={handleSignupBtnClick} />
         </div>) :
-        (<div className="dropdown pl-2 w-2/12 min-w-[2rem] max-w-[4rem] relative">
+        (<div className="dropdown pl-2 w-2/12 min-w-[2rem] max-w-[3rem] relative">
             <img
                 id="outerImage"
                 src={user.image ? `${user.image}` : `${import.meta.env.VITE_DEFAULT_IMAGE}`}
@@ -89,9 +103,10 @@ export default function ProfilePreview({MainButtonRefs}){
                     <div className="w-full items-center justify-center text-center">{user.role.toUpperCase()}</div>
                     <h2 className="font-bold py-2">Name: <span className="font-normal">{user.name}</span></h2>
                     <h2 className="font-bold py-2">Email: <span className="font-normal">{user.email}</span></h2>
-                    <h2 className="font-bold py-2">Mobile: <span className="font-normal">{user.mobile}</span></h2>
+                    <h2 className="font-bold py-2">Mobile: <span className="font-normal">{user.mobile ? user.mobile : "N/A"}</span></h2>
                     <div className="h-1/4"></div>
                 </div>
+                <ButtonContained onClick={handleMypostsBtnClick} tailwindClasses="w-full my-2" text="My Posts" />
                 <ButtonContained onClick={handleLogoutBtnClick} tailwindClasses="w-full" text="Log Out" />
             </div>
         </div>)

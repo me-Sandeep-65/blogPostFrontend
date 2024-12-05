@@ -3,9 +3,9 @@ import ButtonContained from './ButtonContained'
 import ButtonOutlined from './ButtonOutlined'
 import ButtonPlain from './ButtonPlain'
 import CardContainer from './CardContiner'
+import DropdownButton from './DropDownButton'
 import Footer from './Footer'
 import GoogleLoginButton from './GoogleLoginButton'
-import Home from './Home'
 import InputBox from './InputBox'
 import Label from './Label'
 import Layout from './Layout'
@@ -13,6 +13,8 @@ import Login from './Login'
 import LoginForm from './LoginForm'
 import LoginSuccess from './LoginSuccess'
 import MainContainer from './MainContainer'
+import NotFound from './NotFound'
+import Posts from './Posts'
 import ProfilePreview from './ProfilePreview'
 import Signup from './Signup'
 import SignupForm from './SignupForm'
@@ -25,9 +27,9 @@ export {
     ButtonOutlined,
     ButtonPlain,
     CardContainer,
+    DropdownButton,
     Footer,
     GoogleLoginButton,
-    Home,
     InputBox,
     Label,
     Layout,
@@ -35,6 +37,8 @@ export {
     LoginForm,
     LoginSuccess,
     MainContainer,
+    NotFound,
+    Posts,
     ProfilePreview,
     Signup,
     SignupForm,
