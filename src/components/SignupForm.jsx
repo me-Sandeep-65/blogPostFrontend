@@ -38,7 +38,7 @@ function SignupForm({ nameField, mobileField, emailField, passwordField }) {
             mobileField.current.value = '';
 
             alert("Signup successful.");
-            window.location.href = "/";
+            // window.location.href = "/";
         })
         .catch((error) => {
             passwordField.current.value='';

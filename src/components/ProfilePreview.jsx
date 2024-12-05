@@ -76,14 +76,14 @@ export default function ProfilePreview({MainButtonRefs}){
             <img
                 id="outerImage"
                 src={user.image ? `${user.image}` : `${import.meta.env.VITE_DEFAULT_IMAGE}`}
-                className="rounded-full w-full h-full filter dark:invert max-h-[4rem] text-xs"
+                className="rounded-full w-full h-full filter max-h-[4rem] text-xs"
                 alt="profile image"
             />
             <div id="innerDiv" className="dropdown-menu hidden rounded-md backdrop-blur-sm flex-col items-center z-10 justify-center p-4 shadow-md absolute border border-gray-400 w-[20vw] h-[70vh] min-w-[250px] min-h-[450px] bg-gray-200 dark:bg-gray-800 top-full left-full md:left-0 transform md:-translate-x-1/2 -translate-x-full">
                 <div className="h-full px-4 text-sm 2xl:text-lg flex flex-col items-left justify-between">
                     <img
                         src={user.image ? `${user.image}` : `${import.meta.env.VITE_DEFAULT_IMAGE}`}
-                        className="rounded-full self-center w-1/3 m-4 bg-zinc-800 dark:bg-zinc-300  aspect-square filter dark:invert"
+                        className="rounded-full self-center w-1/3 m-4 bg-zinc-800 dark:bg-zinc-300  aspect-square filter"
                         alt="Profile Image"
                     />
                     <div className="w-full items-center justify-center text-center">{user.role.toUpperCase()}</div>

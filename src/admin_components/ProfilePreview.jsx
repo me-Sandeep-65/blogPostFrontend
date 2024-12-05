@@ -16,6 +16,8 @@ export default function ProfilePreview({MainButtonRefs}, ...otherProps){
         if(!userState.userProfile){
             axios.get(`${baseurl}/api/v1/getuserdata`, {withCredentials: true})
             .then((response) => {
+                console.log('userdata is loading..')
+                console.log(response.data);
                 setUserProfile({
                     loading: false,
                     userProfile:response.data
@@ -29,6 +31,10 @@ export default function ProfilePreview({MainButtonRefs}, ...otherProps){
             });
         }
     },[setUserProfile]);
+
+    console.log('from profile preview')
+    console.log(userState);
+
 
     const handleLoginBtnClick = ()=>{
         MainButtonRefs.forEach(element => {
@@ -69,6 +75,15 @@ export default function ProfilePreview({MainButtonRefs}, ...otherProps){
         
     }
 
+    const handleModeratorsBtnClick = () => {
+        MainButtonRefs.forEach(element => {
+            element.current.classList.add('border-transparent')
+            element.current.classList.remove('border-indigo-600')
+        });
+        navigate('/moderators');
+        
+    }
+
     if(userState.loading){
         return(<UserLoading />)
     }
@@ -101,6 +116,7 @@ export default function ProfilePreview({MainButtonRefs}, ...otherProps){
                     <div className="h-1/4"></div>
                 </div>
                 <ButtonContained onClick={handleMypostsBtnClick} tailwindClasses="w-full my-2" text="My Posts" />
+                <ButtonContained onClick={handleModeratorsBtnClick} tailwindClasses="w-full my-2" text="Moderators" />
                 <ButtonContained onClick={handleLogoutBtnClick} tailwindClasses="w-full" text="Log Out" />
             </div>
         </div>)

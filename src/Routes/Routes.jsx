@@ -8,6 +8,7 @@ import { NotFound } from '../components'
 
 function Routes() {
     const userState = useRecoilValue(userProfile);
+    console.log(userState)
 
     if(!userState.userProfile || userState.userProfile.role === 'member' || userState.userProfile.role === 'blocked') return <UserRoutes />;
     else if(userState.userProfile.role === 'moderator') return <ModeratorRoutes />;

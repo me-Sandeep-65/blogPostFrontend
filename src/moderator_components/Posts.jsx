@@ -13,7 +13,6 @@ function Posts() {
     const [posts, setPosts] = useState(null);
     const [loading, setLoading] = useState(true);
     const baseurl = import.meta.env.VITE_BASE_URL;
-    const defaultImage = import.meta.env.VITE_DEFAULT_IMAGE;
 
     useEffect(() => {
         axios.get(`${baseurl}/api/v1/posts`, {withCredentials: true})
