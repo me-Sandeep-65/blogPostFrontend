@@ -2,7 +2,7 @@ import React, {  useEffect } from "react";
 import CreatePost from "./CreatePost";
 import axios from "axios";
 import PostCard from "../components/PostCard";
-import DropdownButton from "./DropDownButton";
+import DropdownButton from "./DropdownButton";
 import NoPost from "./NoPost";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import PostListSelector from "../store/selectors/postListSelector";
