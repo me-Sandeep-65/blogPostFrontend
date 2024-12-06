@@ -9,16 +9,16 @@ function UserRoutes() {
     <Router>
         <Appbar />
         <Routes>
-        <Route path='/login/' >
-            <Route path='' element={ <Login /> } />
-            <Route path='success' element={ <LoginSuccess /> } />
-        </Route>
-        <Route path='/signup' element={ <Signup /> } />
-        <Route path='/' element={ <MainContainer /> } >
-            <Route index element={<Posts />} />
-            <Route path='my-posts' element={ <MyPosts /> } />
-            <Route path='*' element={<NotFound />} />
-        </Route>
+          <Route path='/login/' >
+              <Route path='' element={ <Login /> } />
+              <Route path='success' element={ <LoginSuccess /> } />
+          </Route>
+          <Route path='/signup' element={ <Signup /> } />
+          <Route path='/' element={ <MainContainer /> } >
+              <Route index element={<Posts />} />
+              <Route path='my-posts' element={ <MyPosts /> } />
+              <Route path='*' element={<NotFound />} />
+          </Route>
         </Routes>
         <Footer />  
     </Router>
