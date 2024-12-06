@@ -107,26 +107,21 @@ Before setting up the project, make sure you have the following installed on you
 
 ##### Step 1: Backend Setup
 
-1. Clone the backend repository:
+1. **Clone the backend repository**:
     ```bash
     git clone https://github.com/me-Sandeep-65/blogPostBackend.git
     cd blogPostBackend
     ```
 
-2. Install dependencies:
+2. **Install dependencies**:
     ```bash
     npm install
     ```
 
-3. **Setup environment variables**:  
-    Create a `.env` file in the root directory of the backend project. You may need to add configurations such as database URLs, JWT secret, and other environment-specific details.
-    
-    Example of `.env` file:
-    ```env
-    PORT=8000
-    MONGO_URI=mongodb://localhost:27017/blogPostDB
-    JWT_SECRET=your-secret-key
-    ```
+3. **Set up environment variables**:
+    - Create a `.env` file in the root directory and add the following variables.
+    - Copy the contents of the `.env copy` file and paste it in `.env` file.
+    - Replace the placeholder values with your actual credentials.
 
 4. **Set up CORS**:  
     configure CORS in `app.js` file:
@@ -139,7 +134,6 @@ Before setting up the project, make sure you have the following installed on you
     ```
 
 5. **Run the Backend**:
-    Once the environment variables and CORS are set up, run the backend server with:
     ```bash
     npm run dev
     ```
@@ -149,23 +143,23 @@ Before setting up the project, make sure you have the following installed on you
 
 
 #### Step 2: Frontend Setup
-1. Clone the frontend repository:
+1. **Clone the frontend repository**:
     ```bash
     git clone https://github.com/me-Sandeep-65/blogPostFrontend.git
     cd blogPostFrontend
     ```
 
-2. Install frontend dependencies:
+2. **Install frontend dependencies**:
     ```bash
     npm install
     ```
 
-3. Set up environment variables:
+3. **Set up environment variables**:
     - Create a `.env` file in the root directory and add the following variables.
     - Copy the contents of the `.env copy` file and paste it in `.env` file.
     - Replace the placeholder values with your actual credentials.
     
-4. Start the frontend development server:
+4. **Start the frontend development server**:
     ```bash
     npm run dev
     ```
@@ -182,7 +176,7 @@ Before setting up the project, make sure you have the following installed on you
     ```
 - **OAuth Setup**: If you are using Google OAuth, make sure to configure your **Google Cloud Project** correctly and obtain valid OAuth credentials. Follow the official documentation for setting up OAuth in a Node.js application: [Google OAuth 2.0 Documentation](https://developers.google.com/identity/protocols/oauth2)
 
-## Future Enhancement
+## Future Enhancements
 
 While this application provides a basic community blog post system with role-based access control, there are several improvements and new features that can be added in future versions:
 
@@ -193,3 +187,9 @@ While this application provides a basic community blog post system with role-bas
 - **Better Post Editing UI**: Enhance the post editor to allow rich text formatting, file attachments (images, videos), and easy post previews.
 
 - **Lazy Loading**: Implement lazy loading for posts, images, and comments to improve performance and reduce initial page load time.
+
+
+
+
+
+
