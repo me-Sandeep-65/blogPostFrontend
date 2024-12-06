@@ -54,7 +54,7 @@ function GoogleLoginButton() {
         // });
     }
   return (
-    <ButtonOutlined tailwindClasses="w-4/5" text="Sign in with Google" icon="./src/assets/icons/google.png" iconWidth="w-1/12" onClick={googleLoginHandler} ></ButtonOutlined>
+    <ButtonOutlined tailwindClasses="w-4/5" text="Sign in with Google" icon="./src/assets/icons/google.svg" iconWidth="w-1/12" onClick={googleLoginHandler} ></ButtonOutlined>
   )
 }
 
