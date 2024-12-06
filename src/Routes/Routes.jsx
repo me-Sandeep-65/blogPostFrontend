@@ -1,5 +1,5 @@
 import React from 'react'
-import UserRoutes from './userRoutes'
+import UserRoutes from './UserRoutes'
 import ModeratorRoutes from './ModeratorRoutes'
 import AdminRoutes from './AdminRoutes'
 import userProfile from '../store/selectors/userProfile'
