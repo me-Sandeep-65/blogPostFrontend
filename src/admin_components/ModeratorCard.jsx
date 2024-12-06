@@ -1,14 +1,20 @@
 import React from 'react'
 import { CardContainer } from '../components'
 import axios from 'axios';
+import { useSetRecoilState } from 'recoil';
+import UserListSelector from '../store/selectors/userListSelector';
 
 function ModeratorCard({user}) {
+  const setListState = useSetRecoilState(UserListSelector);
   const baseurl = import.meta.env.VITE_BASE_URL;
 
   const removeModerator = () => {
     axios.post(`${baseurl}/api/v1/admin/remove-moderator`, {userId: user._id}, {withCredentials:true})
     .then(response => {
-      if(response.data.status) alert("Moderator removed.")
+      if(response.data.userId){
+        setListState({removeId: response.data.userId})
+        alert("Moderator removed.")
+      }
       else alert("Failed to Remove Moderator.");
     })
     .catch(error => {

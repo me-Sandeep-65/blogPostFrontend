@@ -1,18 +1,26 @@
 import React from 'react'
 import { CardContainer } from '../components'
 import axios from 'axios';
+import { useSetRecoilState } from 'recoil';
+import UserListSelector from "../store/selectors/userListSelector";
+
+
 
 function BlockedUserCard({user}) {
+  const setListState = useSetRecoilState(UserListSelector);
   const baseurl = import.meta.env.VITE_BASE_URL;
 
   const unblockUser = () => {
     axios.post(`${baseurl}/api/v1/moderator/unblock-user`, {userId: user._id}, {withCredentials:true})
     .then(response => {
-      if(response.data.status) alert("User blocked.")
-      else alert("Failed to block user");
+      if(response.data.userId){
+        setListState({removeId: response.data.userId})
+        alert("User Unblocked.");
+      }
+      else alert("Failed to Unblock user");
     })
     .catch(error => {
-      alert("Failed to block User.");
+      alert("Failed to Unblock User.");
     })
   }
   return (

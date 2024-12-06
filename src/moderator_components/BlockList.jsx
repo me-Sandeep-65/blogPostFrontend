@@ -3,28 +3,32 @@ import { CardContainer } from "../components";
 import axios from "axios";
 import BlockedUserCard from "./BlockedUserCard";
 import NothingToShow from "../components/NothingToShow";
-
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import UserListSelector from "../store/selectors/userListSelector";
 
 function BlockList() {
-    const [users, setUsers] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const listState = useRecoilValue(UserListSelector);
+    const setListState = useSetRecoilState(UserListSelector);
     const baseurl = import.meta.env.VITE_BASE_URL;
 
     useEffect(() => {
         axios.get(`${baseurl}/api/v1/moderator/blocked-users`, {withCredentials: true})
         .then(response => {
-            setUsers(response.data);
-            console.log(response.data)
-            setLoading(false);
-
+            setListState({
+                loading: false,
+                users:response.data,
+            });
         })
         .catch(error => {
             console.error(error);
-            setLoading(false);
+            setListState({
+                loading: false,
+                users: [],
+            })
         })
 
 
-    }, [setUsers])
+    }, [setListState])
 
 
     return(<>
@@ -32,7 +36,7 @@ function BlockList() {
             <div className="my-3 text-xl font-bold">Block List</div>
         </div>
         <div className="w-full h-full items-start overflow-auto">
-            {loading ? <div>Loading...</div> : users && users.length !== 0 ? users.map((user, index) => (
+            {listState.loading ? <div>Loading...</div> : listState.users.length !== 0 ? listState.users.map((user, index) => (
                 <BlockedUserCard key={user._id} user={user} />
             )) : <NothingToShow />}
             {/* <CardContainer tailwindClasses=" py-3 w-full bg-white dark:bg-gray-800 flex flex-col justify-center items-center justify-between border-b">

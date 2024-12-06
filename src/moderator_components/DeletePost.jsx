@@ -1,10 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import axios from 'axios';
+import { useSetRecoilState } from 'recoil';
+import PostListSelector from '../store/selectors/postListSelector';
 
 export default function DeletePost({ postId, userId }) {
+  const setListState = useSetRecoilState(PostListSelector);
   const [open, setOpen] = useState(false);
 
   const toggleMenu = () => setOpen(!open);
@@ -15,8 +18,15 @@ export default function DeletePost({ postId, userId }) {
     axios.post(`${baseurl}/api/v1/moderator/delete-post`, {postId}, {withCredentials: true})
     .then(response => {
       console.log(response.data);
-      if(response.data.status) alert("Post deleted.");
-      else alert("Error deleting post.");
+      if(response.data?.content){
+        setListState({content:response.data});
+        alert("Post deleted.");
+      }
+      else if(response.data){
+        setListState({removeId:response.data});
+        alert("Post deleted successfully.")
+      }
+      else alert("Unable deleting post.");
 
       setOpen(false);
     })

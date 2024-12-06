@@ -4,8 +4,11 @@ import { useRef, useState } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import { Label, ButtonContained, InputBox} from '../components'
 import axios from 'axios'
+import { useSetRecoilState } from 'recoil'
+import UserListSelector from '../store/selectors/userListSelector'
 
 export default function AddModerator() {
+  const setListState = useSetRecoilState(UserListSelector);
   const [open, setOpen] = useState(false);
   const emailRef = useRef(null);
   const baseurl = import.meta.env.VITE_BASE_URL;
@@ -17,8 +20,6 @@ export default function AddModerator() {
       "email": emailRef.current.value,
     }
 
-    console.log(data)
-
     if(!data.email){
       alert("Please fill in all fields");
       return;
@@ -27,12 +28,14 @@ export default function AddModerator() {
     axios.post(`${baseurl}/api/v1/admin/add-moderator`, data, { withCredentials: true})
     .then((response) => {
       console.log(response.data);
-      if(!response.data.status){
+      if(!response.data){
         alert('Failed to Add Moderator.');
       }
       else{
-        toggleMenu();
         //add the post to dom
+        setListState({user: response.data});
+        
+        toggleMenu();
       }
     })
     .catch((error) => {

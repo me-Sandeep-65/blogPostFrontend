@@ -18,14 +18,12 @@ export default function ReportPad({userId, postId}) {
   const reportPost = () => {
     axios.post(`${baseurl}/api/v1/report-post`, {postId}, {withCredentials: true})
     .then(response => {
-      console.log(response.data);
       if(response.data.status) alert("Post reported.");
       else alert("Error reported post.");
 
       setOpen(false);
     })
     .catch(error => {
-      console.log(error)
       alert('Error reported post.');
       setOpen(false);
     });

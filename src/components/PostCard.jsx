@@ -13,7 +13,7 @@ const PostCard = ({ PostActionButton, Post, PostBottomButton, height }, ...other
               ))}
             </div>
         </div>
-        <div className="h-3/5 w-full px-4">
+        <div className="h-3/5 py-3 w-full px-4">
             <h1 className="text-xl font-semibold text-ellipsis overflow-hidden whitespace-nowrap">{Post.title} </h1>
             <p className="line-clamp-6 text-ellipsis overflow-hidden text-justify">
                 {Post.content}

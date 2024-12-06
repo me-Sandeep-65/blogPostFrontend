@@ -1,15 +1,17 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import Label from './Label'
 import ButtonContained from './ButtonContained'
 import InputBox from './InputBox'
 import userProfile from '../store/selectors/userProfile'
-import { useRecoilValue } from 'recoil'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 import axios from 'axios'
+import PostListSelector from '../store/selectors/postListSelector'
 
 export default function CreatePost() {
+  const setListState = useSetRecoilState(PostListSelector)
   const [open, setOpen] = useState(false);
   const userState = useRecoilValue(userProfile);
   const subjectRef = useRef(null);
@@ -24,8 +26,6 @@ export default function CreatePost() {
       "about": aboutRef.current.value,
     }
 
-    console.log(data)
-
     if(!data.subject || !data.about){
       alert("Please fill in all fields");
       return;
@@ -33,13 +33,13 @@ export default function CreatePost() {
 
     axios.post(`${baseurl}/api/v1/new-post`, data, { withCredentials: true})
     .then((response) => {
-      console.log(response.data);
-      if(!response.data.newPost){
+      if(!response.data){
         alert('Failed to create post');
       }
       else{
-        toggleMenu();
         //add the post to dom
+        setListState({post:response.data});
+        toggleMenu();
       }
     })
     .catch((error) => {
