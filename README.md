@@ -182,7 +182,7 @@ Before setting up the project, make sure you have the following installed on you
     ```
 - **OAuth Setup**: If you are using Google OAuth, make sure to configure your **Google Cloud Project** correctly and obtain valid OAuth credentials. Follow the official documentation for setting up OAuth in a Node.js application: [Google OAuth 2.0 Documentation](https://developers.google.com/identity/protocols/oauth2)
 
-## Future Enhancements
+## Future Enhancement
 
 While this application provides a basic community blog post system with role-based access control, there are several improvements and new features that can be added in future versions:
 
