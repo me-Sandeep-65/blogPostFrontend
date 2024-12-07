@@ -4,6 +4,7 @@ import userProfile from '../store/selectors/userProfile';
 import ButtonContained from './ButtonContained';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 function LoginForm({setEmail, setPassword}) {
     const navigate = useNavigate();
@@ -26,7 +27,9 @@ function LoginForm({setEmail, setPassword}) {
 
         axios.post(`${baseurl}/api/v1/login/`, data, { withCredentials: true} )
         .then((response) => {
-            console.log(response.data)
+            const token = Cookies.get('Authorization');
+            if(token) localStorage.setItem('Authorization', token);  // needed to overcome the statelessness of vercel
+
             setUserProfile({
                 loading: false,
                 userProfile:response.data
