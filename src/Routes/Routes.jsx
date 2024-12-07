@@ -9,7 +9,9 @@ import { NotFound } from '../components'
 function Routes() {
     // To overcome the statelessness of vercel
     const token = localStorage.getItem('Authorization');
-    if(token){ 
+    console.log("token");
+    console.log(token);
+    if(token && !Cookies.get('Authorization')){ 
         Cookies.set('Authorization', token);
     }
 
