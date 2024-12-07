@@ -3,8 +3,10 @@ import { useSetRecoilState } from "recoil";
 import userProfile from "../store/selectors/userProfile";
 import ButtonContained from './ButtonContained';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function SignupForm({ nameField, mobileField, emailField, passwordField }) {
+    const navigate = useNavigate();
     const setUserProfile = useSetRecoilState(userProfile);
 
     const signupHandler = (e) => {
@@ -38,7 +40,7 @@ function SignupForm({ nameField, mobileField, emailField, passwordField }) {
             mobileField.current.value = '';
 
             alert("Signup successful.");
-            // window.location.href = "/";
+            navigate("/");
         })
         .catch((error) => {
             passwordField.current.value='';

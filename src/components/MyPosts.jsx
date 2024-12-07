@@ -21,7 +21,7 @@ function MyPosts() {
         .then(response => {
             setListState({
                 loading: false,
-                posts: response.data,
+                posts: response.data || [],
             });
         })
         .catch(error => {
@@ -41,7 +41,7 @@ function MyPosts() {
         </div>
         {!userState.userProfile ? <NoPost /> :
         (<div className="w-full h-full p-2 flex flex-wrap items-start justify-center overflow-auto">
-            {listState.loading ? <div>Loading...</div> : listState.posts.length !== 0 ? listState.posts.map(post => {
+            {listState.loading ? <div>Loading...</div> : listState.posts !== 0 ? listState.posts.map(post => {
             return (<PostCard key={post._id} Post={post} PostActionButton={[DeletePost]} />)})
             : <NoPost />}
 

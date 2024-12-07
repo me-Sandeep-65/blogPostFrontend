@@ -17,7 +17,7 @@ const UserListSelector = selector({
     
         if (update && update.user) {
           // Use addUser function to add a new user
-          set(UserListState, addUser(currentState, update.moderator));
+          set(UserListState, addUser(currentState, update.user));
         } else if (update && update.list) {
           // Use replaceUserList function to replace the entire list
           set(UserListState, replaceUserList(currentState, update.list));
