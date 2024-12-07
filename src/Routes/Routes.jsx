@@ -10,11 +10,7 @@ function Routes() {
     // To overcome the statelessness of vercel
     const token = localStorage.getItem('Authorization');
     if(token){ 
-        Cookies.set('Authorization', token, {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'None',
-        });
+        Cookies.set('Authorization', token);
     }
 
     const userState = useRecoilValue(userProfile);
