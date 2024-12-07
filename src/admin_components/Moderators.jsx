@@ -17,7 +17,7 @@ function Moderators() {
         .then(response => {
             setListState({
                 loading: false,
-                users:response.data
+                users:response.data || [],
             });
         })
         .catch(error => {

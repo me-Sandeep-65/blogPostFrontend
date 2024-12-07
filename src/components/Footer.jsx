@@ -1,5 +1,4 @@
 import React from "react";
-import { ProfilePreview } from "../components";
 
 export default function Footer(){
     return(

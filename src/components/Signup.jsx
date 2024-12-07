@@ -2,11 +2,13 @@ import React, { useRef } from "react";
 import { CardContainer, Label, InputBox, SignupForm, GoogleLoginButton } from "../components";
 import { useRecoilValue } from "recoil";
 import userProfile from "../store/selectors/userProfile";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Signup(){
+    const navigate = useNavigate();
     const userState = useRecoilValue(userProfile);
-    if(userState.userProfile) window.location.href = '/';
+    if(userState.userProfile) navigate('/');
 
 
     const nameField = useRef(null);
