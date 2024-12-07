@@ -7,6 +7,16 @@ import { useRecoilValue } from 'recoil'
 import { NotFound } from '../components'
 
 function Routes() {
+    // To overcome the statelessness of vercel
+    const token = localStorage.getItem('Authorization');
+    if(token){ 
+        Cookies.set('Authorization', token, {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'None',
+        });
+    }
+
     const userState = useRecoilValue(userProfile);
     console.log(userState)
 
