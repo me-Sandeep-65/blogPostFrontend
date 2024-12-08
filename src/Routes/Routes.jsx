@@ -10,8 +10,8 @@ import Cookies from 'js-cookie'
 function Routes() {
     // To overcome the statelessness of vercel
     const token = localStorage.getItem('Authorization');
-    console.log("from routes")
-    console.log(token);
+    // console.log("from routes")
+    // console.log(token);
     if(token){ 
         Cookies.set('Authorization', token, {
             // httpOnly: true,

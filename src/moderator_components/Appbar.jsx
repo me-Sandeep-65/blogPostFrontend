@@ -39,7 +39,7 @@ export default function Appbar(){
     useEffect(() => {
         //get the current location
         const currentLocation = window.location.pathname
-        console.log(currentLocation)
+        // console.log(currentLocation)
         if(currentLocation === "/"){
             selectHome()
         }

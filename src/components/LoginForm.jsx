@@ -29,8 +29,8 @@ function LoginForm({setEmail, setPassword}) {
         .then((response) => {
 
             const token = Cookies.get('Authorization');
-            console.log("login");
-            console.log(response.data.token)
+            // console.log("login");
+            // console.log(response.data.token)
             console.log(token)
             if(token) localStorage.setItem('Authorization', token);  // needed to overcome the statelessness of vercel
 
