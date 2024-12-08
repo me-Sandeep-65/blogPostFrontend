@@ -28,10 +28,9 @@ function LoginForm({setEmail, setPassword}) {
         axios.post(`${baseurl}/api/v1/login/`, data, { withCredentials: true} )
         .then((response) => {
             const token = Cookies.get('Authorization');
-            if(token) localStorage.setItem('Authorization', token, {
-                Secure: true,
-                SameSite: "None",
-            });  // needed to overcome the statelessness of vercel
+            console.log("login");
+            console.log(token)
+            if(token) localStorage.setItem('Authorization', token);  // needed to overcome the statelessness of vercel
 
             setUserProfile({
                 loading: false,

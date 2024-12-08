@@ -5,6 +5,7 @@ import AdminRoutes from './AdminRoutes'
 import userProfile from '../store/selectors/userProfile'
 import { useRecoilValue } from 'recoil'
 import { NotFound } from '../components'
+import Cookies from 'js-cookie'
 
 function Routes() {
     // To overcome the statelessness of vercel
@@ -13,9 +14,9 @@ function Routes() {
     console.log(token);
     if(token){ 
         Cookies.set('Authorization', token, {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'None',
+            // httpOnly: true,
+            Secure: true,
+            SameSite: 'None',
         });
     }
 

@@ -29,10 +29,7 @@ function SignupForm({ nameField, mobileField, emailField, passwordField }) {
         axios.post(`${baseurl}/api/v1/signup/`, data, { withCredentials: true })
         .then((response) => {
             const token = Cookies.get('Authorization');
-            if(token) localStorage.setItem('Authorization', token, {
-                Secure: true,
-                SameSite: "None",
-            });  //  needed to overcome the statelessness of the vercel
+            if(token) localStorage.setItem('Authorization', token);  //  needed to overcome the statelessness of the vercel
 
             setUserProfile({
                 loading: false,
