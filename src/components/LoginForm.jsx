@@ -27,14 +27,16 @@ function LoginForm({setEmail, setPassword}) {
 
         axios.post(`${baseurl}/api/v1/login/`, data, { withCredentials: true} )
         .then((response) => {
+
             const token = Cookies.get('Authorization');
             console.log("login");
+            console.log(response.data.token)
             console.log(token)
             if(token) localStorage.setItem('Authorization', token);  // needed to overcome the statelessness of vercel
 
             setUserProfile({
                 loading: false,
-                userProfile:response.data
+                userProfile:response.data.user
             });
             if (setEmail.current) {
                 setEmail.current.value = '';  // Clear email input
