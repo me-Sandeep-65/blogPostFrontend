@@ -27,7 +27,6 @@ export default function AddModerator() {
 
     axios.post(`${baseurl}/api/v1/admin/add-moderator`, data, { withCredentials: true})
     .then((response) => {
-      console.log(response.data);
       if(!response.data){
         alert('Failed to Add Moderator.');
       }

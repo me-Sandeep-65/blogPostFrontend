@@ -19,7 +19,7 @@ function Posts() {
         .then(response => {
             setListState({
                 loading: false,
-                posts: response.data,
+                posts: response.data || [],
             });
         })
         .catch(error => {

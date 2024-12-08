@@ -34,12 +34,9 @@ export default function Appbar(){
         reportsRef.current.classList.remove("border-indigo-600");
     }
 
-    console.log('appbar render')
-
     useEffect(() => {
         //get the current location
         const currentLocation = window.location.pathname
-        console.log(currentLocation)
         if(currentLocation === "/"){
             selectHome()
         }

@@ -54,7 +54,7 @@ export default function ProfilePreview({MainButtonRefs}){
             });
     
     
-            window.location.href = '/';
+            navigate('/');
         })
         .catch((error) => {
             alert("Unable to logout.")

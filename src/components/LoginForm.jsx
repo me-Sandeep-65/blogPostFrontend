@@ -3,8 +3,10 @@ import { useSetRecoilState } from "recoil";
 import userProfile from '../store/selectors/userProfile';
 import ButtonContained from './ButtonContained';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function LoginForm({setEmail, setPassword}) {
+    const navigate = useNavigate();
     const setUserProfile = useSetRecoilState(userProfile);
 
     const loginHandler = (e) => {
@@ -24,14 +26,6 @@ function LoginForm({setEmail, setPassword}) {
 
         axios.post(`${baseurl}/api/v1/login/`, data, { withCredentials: true} )
         .then((response) => {
-            const token = Cookies.get('Authorization');
-            console.log("after login")
-            console.log(token);
-            if(token) localStorage.setItem('Authorization', token, {
-                Secure: true,
-                SameSite: "None",
-            });  // needed to overcome the statelessness of vercel
-
             setUserProfile({
                 loading: false,
                 userProfile:response.data
@@ -43,7 +37,7 @@ function LoginForm({setEmail, setPassword}) {
                 setPassword.current.value = '';  // Clear password input
             }
             alert("Login successful.");
-            window.location.href = "/";
+            navigate("/");
         })
         .catch((error) => {
             if (setPassword.current) {

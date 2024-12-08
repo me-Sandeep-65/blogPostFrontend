@@ -6,8 +6,10 @@ import ButtonPlain from './ButtonPlain'
 import userProfile from '../store/selectors/userProfile'
 import { useRecoilValue } from 'recoil'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 export default function ReportPad({userId, postId}) {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const userState = useRecoilValue(userProfile);
 
@@ -114,7 +116,7 @@ export default function ReportPad({userId, postId}) {
                   type="button"
                   onClick={() =>{
                       setOpen(false);
-                      window.location.href = '/login';
+                      navigate('/login');
                   }}
                   className="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 sm:ml-3 sm:w-auto"
                 >

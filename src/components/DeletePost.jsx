@@ -17,7 +17,6 @@ export default function DeletePost({ postId, userId }) {
   const deletePost = () => {
     axios.post(`${baseurl}/api/v1/delete-post`, {postId}, {withCredentials: true})
     .then(response => {
-      console.log(response.data);
       if(response.data){
         setListState({removeId:response.data});
         alert("Post deleted.");

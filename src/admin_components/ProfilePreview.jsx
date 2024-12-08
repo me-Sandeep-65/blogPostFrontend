@@ -13,6 +13,7 @@ export default function ProfilePreview({MainButtonRefs}, ...otherProps){
 
     
     useEffect(() => {
+        const navigate = useNavigate();
         if(!userState.userProfile){
             axios.get(`${baseurl}/api/v1/getuserdata`, {withCredentials: true})
             .then((response) => {
@@ -31,9 +32,6 @@ export default function ProfilePreview({MainButtonRefs}, ...otherProps){
             });
         }
     },[setUserProfile]);
-
-    console.log('from profile preview')
-    console.log(userState);
 
 
     const handleLoginBtnClick = ()=>{
@@ -60,7 +58,7 @@ export default function ProfilePreview({MainButtonRefs}, ...otherProps){
             });
     
     
-            window.location.href = '/';
+            navigate('/');
         })
         .catch((error) => {
             alert("Unable to logout.")

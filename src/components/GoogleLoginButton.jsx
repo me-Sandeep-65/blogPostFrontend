@@ -3,10 +3,12 @@ import axios from "axios";
 import ButtonOutlined from './ButtonOutlined'
 import { useSetRecoilState } from "recoil";
 import userProfile from "../store/selectors/userProfile";
+import { useNavigate } from 'react-router-dom';
 
 function GoogleLoginButton() {
-    const baseurl = import.meta.env.VITE_BASE_URL;
+    const navigate = useNavigate();
     const setUserProfile = useSetRecoilState(userProfile);
+    const baseurl = import.meta.env.VITE_BASE_URL;
 
     const googleLoginHandler = () => {
         const newWindow = window.open(
@@ -28,7 +30,7 @@ function GoogleLoginButton() {
                             userProfile:response.data
                         });
 
-                        window.location.href='/';
+                        navigate('/');
                     })
                     .catch((error) => {
                         alert("Failed to Login. Please try after sometime..")
